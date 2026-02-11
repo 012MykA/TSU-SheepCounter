@@ -1,0 +1,14 @@
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Python
+__pycache__/
+venv/
+.venv/
+
+# C/C++
+build/
+bin/
