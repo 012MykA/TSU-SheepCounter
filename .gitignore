@@ -12,3 +12,6 @@ venv/
 # C/C++
 build/
 bin/
+
+# AI / OpenCV models
+models/
