@@ -2,10 +2,10 @@ import sys
 import os
 from pathlib import Path
 
-from scripts.sheep_counter import count_sheep
+from src.sheep_counter import count_sheep
 
 def main():
-    os.chdir(Path(__file__).parent.parent)
+    os.chdir(Path(__file__).parent)
     
     if len(sys.argv) < 2:
         print("Usage: python count_sheep.py <image1> <image2> ...")
