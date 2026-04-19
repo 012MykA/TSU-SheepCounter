@@ -22,5 +22,5 @@ uv sync
 
 ## Usage example
 ```bash
-uv run python main.py images/sheep_photo.png
+uv run python main.py
 ```
