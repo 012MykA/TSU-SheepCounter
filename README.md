@@ -40,7 +40,6 @@ pip install uv
 ```
 
 2. **Install dependencies**
-This command will create a virtual environment and install all required packages (including YOLOv8).
 ```bash
 uv sync
 ```
