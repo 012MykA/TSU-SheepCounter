@@ -5,7 +5,7 @@ from src.video_stream import start_webcam
 def main():
     print("Starting Sheep Counting System...")
     
-    detector = SheepDetector(model_name="models/yolov8n.pt", conf=0.25)
+    detector = SheepDetector(model_name="models/yolov8m.pt", conf=0.25)
     
     try:
         start_webcam(detector)
