@@ -44,3 +44,8 @@ This command will create a virtual environment and install all required packages
 ```bash
 uv sync
 ```
+
+## Usage example
+```bash
+uv run python main.py images/sheep_photo.png
+```
