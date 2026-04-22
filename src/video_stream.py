@@ -1,13 +1,18 @@
 import cv2
+import time
 
-def start_webcam(detector):
-    cap = cv2.VideoCapture(0)  # 0 is usually the default camera
+from src.notifier import BaseNotifier
+from src.sheep_detector import SheepDetector
 
+
+def start_webcam(detector: SheepDetector, notifier: BaseNotifier, interval=5):
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
-        print("Error: Could not open video source.")
+        print("Error: Camera not found.")
         return
 
-    print("Press 'Q' to exit.")
+    last_count = -1
+    last_notify_time = 0
 
     while True:
         ret, frame = cap.read()
@@ -15,26 +20,14 @@ def start_webcam(detector):
             print("Error: Failed to capture image.")
             break
 
-        # Processing the frame
         processed_frame, count = detector.process_frame(frame)
 
-        # UI Overlay: Display sheep count
-        cv2.putText(
-            processed_frame, 
-            f"Sheep Count: {count}", 
-            (20, 50), 
-            cv2.FONT_HERSHEY_SIMPLEX, 
-            1, 
-            (0, 255, 0), 
-            2
-        )
+        current_time = time.time()
+        if count != last_count and (current_time - last_notify_time > interval):
+            notifier.notify(count, processed_frame)
+            last_count = count
+            last_notify_time = current_time
 
-        # Show the output window
-        cv2.imshow("Sheep Counter Live", processed_frame)
-
-        # Break loop on 'q' key press
-        if cv2.waitKey(1) & 0xFF == ord("q"):
-            break
+        time.sleep(0.1)
 
     cap.release()
-    cv2.destroyAllWindows()
