@@ -17,8 +17,8 @@ You can set up the environment automatically using the provided scripts or follo
 Choose the script corresponding to your operating system:
 
 * **Windows:**
-```bash
-./scripts/setup.bat
+```cmd
+.\scripts\setup.bat
 ```
 
 * **Linux:**
