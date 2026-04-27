@@ -1,10 +1,14 @@
-import os
 from src.sheep_detector import SheepDetector
 from src.video_stream import start_webcam
 from src.notifier import ConsoleNotifier, TelegramNotifier
 
-TG_TOKEN = ""
-CHAT_ID = ""
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TG_TOKEN: str | None = os.getenv("TG_TOKEN")
+CHAT_ID: str | None = os.getenv("CHAT_ID")
 
 
 def main():
@@ -12,7 +16,7 @@ def main():
 
     detector = SheepDetector(model_name="models/yolov8m.pt", conf=0.25)
 
-    if len(TG_TOKEN) != 0 or len(CHAT_ID) != 0:
+    if TG_TOKEN and CHAT_ID:
         notifier = TelegramNotifier(TG_TOKEN, CHAT_ID)
     else:
         notifier = ConsoleNotifier()

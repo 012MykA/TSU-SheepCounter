@@ -13,5 +13,8 @@ venv/
 build/
 bin/
 
+# .env
+.env
+
 # AI / OpenCV models
 # models/
