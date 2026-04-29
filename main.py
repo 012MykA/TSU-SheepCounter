@@ -22,7 +22,7 @@ def main():
         notifier = ConsoleNotifier()
 
     try:
-        start_webcam(detector, notifier, interval=10)
+        start_webcam(detector, notifier)
     except KeyboardInterrupt:
         print("\nStopped by user.")
 
